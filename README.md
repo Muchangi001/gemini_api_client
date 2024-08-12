@@ -3,7 +3,7 @@
 
 
 # INSTALLING THE LIBRARY
-**1. Debian based distros** -> sudo apt-get install libcpprest-dev
+**1. Debian based distros** -> sudo apt-get install libcpprest-dev<br>
 **2. Fedora** -> sudo dnf install cpprest 
 
 # TO RUN THE PROGRAM
