@@ -6,7 +6,7 @@
 **1. Debian based distros** -> sudo apt-get install libcpprest-dev<br>
 **2. Fedora** -> sudo dnf install cpprest 
 
-# TO RUN THE PROGRAM
+# RUNNING THE PROGRAM
 Make sure to install C++ REST SDK library in your system.<br>
 You also have to replace the value of the **apiKey** variable inside the main function with your actual **api key**.<br>
 Run the **"gemini"** executable in the bin folder along with your prompt **(Only for linux users)**.<br>
