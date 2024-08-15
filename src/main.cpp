@@ -5,7 +5,7 @@ int main(int argc, char *argv[]) {
     const std::string logsDir = std::filesystem::current_path().string() + "/logs";
     const std::string logFilePath = logsDir + "/gemini_logs.txt";
     const std::string uri = "https://generativelanguage.googleapis.com";
-    std::string apiKey = "AIzaSyCFDYHepi-dXQ-n2YZpR_sx6OlAgVDbgOs"; //replace with your actual api key
+    std::string apiKey = ""; //replace with your actual api key
 
     //check if the log file exists
     if (!std::filesystem::exists(logsDir)) {
