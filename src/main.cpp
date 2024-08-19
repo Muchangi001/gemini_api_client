@@ -71,7 +71,7 @@ int main(int argc, char *argv[]) {
             logFile << "**TIME :**"<< " *" << std::put_time(&currentTime, "%d-%m-%Y %H:%M:%S") << "*" << "<br>" << std::endl;
             logFile << "**PROMPT =>** " << prompt << "<br>" << std::endl;
             logFile << "**RESPONSE ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓**" << "<br>" <<std::endl;
-            logFile << text << std::endl;
+            logFile << text << std::endl << std::endl;
             logFile << "---" << std::endl;
 
             //append old logs content
