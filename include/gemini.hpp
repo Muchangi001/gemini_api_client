@@ -6,6 +6,7 @@
 #include <cpprest/json.h>
 #include <filesystem>
 #include <fstream>
+#include <sstream>
 #include <chrono>
 #include <ctime>
 #include <iomanip>

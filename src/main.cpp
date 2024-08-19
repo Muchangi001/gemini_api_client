@@ -7,7 +7,7 @@ int main(int argc, char *argv[]) {
     const std::string uri = "https://generativelanguage.googleapis.com";
     std::string apiKey = ""; //replace with your actual api key
 
-    //check if the log file exists
+    //checking if the log file exists
     if (!std::filesystem::exists(logsDir)) {
         std::cout << "creating new '" << logsDir << "' directory" << std::endl;
         std::filesystem::create_directory(logsDir);
@@ -16,12 +16,18 @@ int main(int argc, char *argv[]) {
 
     std::cout << "writing to '" << logFilePath << "'" << std::endl << std::endl;
 
-    //opening the log file in append mode
-    std::ofstream logfile;
-    logfile.open(logFilePath, std::ios::app);
+    //storing the existing log contents in a stringstream
+    std::ifstream existingFile(logFilePath);
+    std::stringstream buffer;
+    buffer << existingFile.rdbuf();
+    existingFile.close();
+
+    //opening the log file in truncate mode to overrite content
+    std::ofstream logFile;
+    logFile.open(logFilePath, std::ios::trunc);
 
     //checking if the log file is open
-    if (!logfile) {
+    if (!logFile) {
         std::cerr << "Error : Could not open the file for writing" << std::endl;
         return 1;
     }
@@ -62,11 +68,14 @@ int main(int argc, char *argv[]) {
             std::tm currentTime = getCurrentTime();
 
             //write the response to the log file
-            logfile << "**TIME : **"<< "*" << std::put_time(&currentTime, "%d-%m-%Y %H:%M:%S") << "*" << "<br>" << std::endl;
-            logfile << "**PROMPT =>** " << prompt << "<br>" << std::endl;
-            logfile << "**RESPONSE ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓**" << "<br>" <<std::endl;
-            logfile << text << std::endl;
-            logfile << "---" << std::endl;
+            logFile << "**TIME :**"<< " *" << std::put_time(&currentTime, "%d-%m-%Y %H:%M:%S") << "*" << "<br>" << std::endl;
+            logFile << "**PROMPT =>** " << prompt << "<br>" << std::endl;
+            logFile << "**RESPONSE ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓**" << "<br>" <<std::endl;
+            logFile << text << std::endl;
+            logFile << "---" << std::endl;
+
+            //append old logs content
+            logFile << buffer.str();
 
             //write response to stdout
             std::cout << "RESPONSE ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓" <<std::endl;
@@ -77,7 +86,7 @@ int main(int argc, char *argv[]) {
     }).wait();
 
     //closing the log file
-    logfile.close();
+    logFile.close();
 
     return 0;
 }
