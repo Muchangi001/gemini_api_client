@@ -13,6 +13,7 @@ int main(int argc, char *argv[]) {
         std::filesystem::create_directory(logsDir);
         std::cout << "creating new '" << logFilePath << "' file" << std::endl;
     }
+    
     std::cout << "writing to '" << logFilePath << "'" << std::endl << std::endl;
 
     //opening the log file in append mode
