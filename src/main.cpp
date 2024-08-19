@@ -5,7 +5,7 @@ int main(int argc, char *argv[]) {
     const std::string logsDir = std::filesystem::current_path().string() + "/gemini_logs";
     const std::string logFilePath = logsDir + "/gemini_logs.md";
     const std::string uri = "https://generativelanguage.googleapis.com";
-    std::string apiKey = "AIzaSyCFDYHepi-dXQ-n2YZpR_sx6OlAgVDbgOs"; //replace with your actual api key
+    std::string apiKey = ""; //replace with your actual api key
 
     //check if the log file exists
     if (!std::filesystem::exists(logsDir)) {
@@ -13,7 +13,7 @@ int main(int argc, char *argv[]) {
         std::filesystem::create_directory(logsDir);
         std::cout << "creating new '" << logFilePath << "' file" << std::endl;
     }
-    
+
     std::cout << "writing to '" << logFilePath << "'" << std::endl << std::endl;
 
     //opening the log file in append mode
