@@ -2,10 +2,10 @@
 
 int main(int argc, char *argv[]) {
 
-    const std::string logsDir = std::filesystem::current_path().string() + "/logs";
-    const std::string logFilePath = logsDir + "/gemini_logs.txt";
+    const std::string logsDir = std::filesystem::current_path().string() + "/gemini_logs";
+    const std::string logFilePath = logsDir + "/gemini_logs.md";
     const std::string uri = "https://generativelanguage.googleapis.com";
-    std::string apiKey = ""; //replace with your actual api key
+    std::string apiKey = "AIzaSyCFDYHepi-dXQ-n2YZpR_sx6OlAgVDbgOs"; //replace with your actual api key
 
     //check if the log file exists
     if (!std::filesystem::exists(logsDir)) {
@@ -59,11 +59,15 @@ int main(int argc, char *argv[]) {
 
             //get the current time and format it
             std::tm currentTime = getCurrentTime();
-            logfile << "[TIMESTAMP : "<< std::put_time(&currentTime, "%d-%m-%Y %H:%M:%S") << "]" << std::endl;
 
             //write the response to the log file
-            logfile << "PROMPT => " << prompt << std::endl;
-            logfile << "RESPONSE ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓" << std::endl << text << std::endl << std::endl << std::endl;
+            logfile << "**TIME : **"<< "*" << std::put_time(&currentTime, "%d-%m-%Y %H:%M:%S") << "*" << "<br>" << std::endl;
+            logfile << "**PROMPT =>** " << prompt << "<br>" << std::endl;
+            logfile << "**RESPONSE ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓**" << "<br>" <<std::endl;
+            logfile << text << std::endl;
+            logfile << "---" << std::endl;
+
+            //write response to stdout
             std::cout << "RESPONSE ↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓↓" <<std::endl;
             std::cout << text <<std::endl;
         } else {
