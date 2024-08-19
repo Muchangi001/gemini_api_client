@@ -1,5 +1,5 @@
 # OVERVIEW
-**A C++ client that consumes the Google Gemini API and stores the prompts and responses inside 'gemini_logs.txt' located in the 'logs' folder which will be created if it does exist.**<br>
+**A C++ client that consumes the Google Gemini API and stores the prompts and responses inside 'gemini_logs.md' located in the 'gemini_logs' folder which will be created if it does not exist.**<br>
 
 
 # LIBRARY USED
